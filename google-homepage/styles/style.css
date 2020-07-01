@@ -1,0 +1,16 @@
+.search-box-svg {
+    height: 24px;
+    width: 24px;
+    vertical-align: middle;
+}
+.apps-image {
+    display: inline-block;
+    outline: none;
+    border-radius: 2px;
+    height: 30px;
+    width: 30px;
+    background-position: -132px -38px;
+    /* opacity: .55; */
+    background-image: url(/images/i1_1967ca6a.png);
+    background-size: 528px 68px;
+}
