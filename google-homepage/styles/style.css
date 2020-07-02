@@ -1,3 +1,64 @@
+.container {
+    /*width: 100%;*/
+    width: 100vw;
+    height: 100vh;
+    background: LightGray;
+    display: grid;
+    grid-template-rows: auto stretch auto;
+}
+.top-panel {
+    align-self: start;    
+    background: LightPink;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto auto auto;
+}
+.top-panel-item {
+    background: Yellow;
+    margin: 10px;
+}
+.search-panel {
+    background: PaleGreen;
+    display: grid;    
+    grid-template-rows: auto auto auto;
+    margin: 10px;
+    justify-items: center;    
+}
+.search-panel .logo {
+    align-self: end;
+}
+.search-panel .search {
+    align-self: center;
+}
+.search-panel .search .search-box {
+    display: grid;    
+    grid-template-columns: auto auto auto;    
+}
+.search-panel .search .button-panel {
+    display: grid;    
+    grid-template-columns: auto auto auto;        
+}
+.search-panel .languages {
+    align-self: start;
+}
+.bottom-item {
+    margin: 5px;
+    font-size: 20pt;
+}
+.bottom-panel {
+    align-self: end;
+}
+.bottom-panel .current-location {
+    background: lightblue;    
+}
+.bottom-panel .bottom-menu {
+    background: LightPink;
+    display: grid;
+    grid-template-columns: auto auto 1fr auto auto auto;
+}
+.bottom-menu-item {
+    background: Yellow;
+    margin: 10px;
+}
 .search-box-svg {
     height: 24px;
     width: 24px;
