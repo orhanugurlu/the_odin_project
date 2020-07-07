@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Rock Paper Scissors Game</title>
+  </head>
+  <body>
+    This is the HTML for Rock Paper Scissors game.
+
+    <script>
+
+        const ROCK = 'Rock'
+        const PAPER = 'Paper'
+        const SCISSORS = 'Scissors'
+
+        function computerPlay() {
+            let newSelection = Math.floor(Math.random()*3)
+            return newSelection === 0 ? ROCK : (newSelection === 1 ? PAPER : SCISSORS)
+        }
+
+        const updateCase = (str) => str.charAt(0).toUpperCase() + str.substring(1)
+
+        function getResultStr (hasWinned, winPlay, losePlay) {
+            return `You ${hasWinned ? 'won' : 'lost'}! ${winPlay} beats ${losePlay}.`
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            if (!playerSelection
+                || playerSelection.length < 4
+                || ![ROCK, PAPER, SCISSORS].includes(updateCase(playerSelection))) {
+                return "Invalid entry"
+            }
+            
+            let playerSel = updateCase(playerSelection)
+            let computerSel = updateCase(computerSelection)
+
+            if (playerSel === computerSel) {
+                return `Tie, both are ${playerSel}`
+            } else if (playerSel === ROCK) {
+                if (computerSel === SCISSORS) {
+                    return getResultStr(true, playerSel, computerSel)
+                } else {
+                    return getResultStr(false, computerSel, playerSel)
+                }
+            } else if (playerSel === PAPER) {
+                if (computerSel === ROCK) {
+                    return getResultStr(true, playerSel, computerSel)
+                } else {
+                    return getResultStr(false, computerSel, playerSel)
+                }
+            } else if (playerSel === SCISSORS) {
+                if (computerSel === PAPER) {
+                    return getResultStr(true, playerSel, computerSel)
+                } else {
+                    return getResultStr(false, computerSel, playerSel)
+                }
+            }
+        }
+
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                console.log(playRound(prompt("Enter your play:"), computerPlay()))
+            }
+        }
+
+    </script>
+
+  </body>
+</html>
