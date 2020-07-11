@@ -5,13 +5,25 @@
     <title>Rock Paper Scissors Game</title>
   </head>
   <body>
-    This is the HTML for Rock Paper Scissors game.
+    <h1>Rock Paper Scissors Game</h1>
+
+    <h2>Score</h2>
+    <div class="score">You: 0 Computer: 0</div>
+    <h2>Message</h2>
+    <div class="result">Press any button to play against computer</div>
+    <br>
+
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
 
     <script>
 
-        const ROCK = 'Rock'
-        const PAPER = 'Paper'
-        const SCISSORS = 'Scissors'
+        const ROCK = 'Rock';
+        const PAPER = 'Paper';
+        const SCISSORS = 'Scissors';
+        let playerScore = 0;
+        let computerScore = 0;
 
         function computerPlay() {
             let newSelection = Math.floor(Math.random()*3)
@@ -21,21 +33,15 @@
         const updateCase = (str) => str.charAt(0).toUpperCase() + str.substring(1)
 
         function getResultStr (hasWinned, winPlay, losePlay) {
-            return `You ${hasWinned ? 'won' : 'lost'}! ${winPlay} beats ${losePlay}.`
+            return `You ${hasWinned ? 'won' : 'lost'} the round! ${winPlay} beats ${losePlay}.`
         }
 
         function playRound(playerSelection, computerSelection) {
-            if (!playerSelection
-                || playerSelection.length < 4
-                || ![ROCK, PAPER, SCISSORS].includes(updateCase(playerSelection))) {
-                return "Invalid entry"
-            }
-            
             let playerSel = updateCase(playerSelection)
             let computerSel = updateCase(computerSelection)
 
             if (playerSel === computerSel) {
-                return `Tie, both are ${playerSel}`
+                return `Tie this round, both are ${playerSel}`
             } else if (playerSel === ROCK) {
                 if (computerSel === SCISSORS) {
                     return getResultStr(true, playerSel, computerSel)
@@ -57,11 +63,24 @@
             }
         }
 
-        function game() {
-            for (let i = 0; i < 5; i++) {
-                console.log(playRound(prompt("Enter your play:"), computerPlay()))
+        const handleButtonClick = (e) => {
+            if (computerScore === 5 || playerScore === 5) {
+                computerScore = 0;
+                playerScore = 0;
             }
+            let result = playRound(e.target.id, computerPlay());
+            if (result.includes('won')) playerScore++;
+            if (result.includes('lost')) computerScore++;
+            if (computerScore === 5) {
+                result += " <b>Computer won the game.</b>"
+            } else if (playerScore === 5) {
+                result += " <b>You won the game.</b>"
+            }
+            document.querySelector('.result').innerHTML = result;
+            document.querySelector('.score').textContent = `You: ${playerScore} Computer: ${computerScore}`
         }
+
+        document.querySelectorAll('button').forEach((element) => element.addEventListener('click', handleButtonClick))
 
     </script>
 
