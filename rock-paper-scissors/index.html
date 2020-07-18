@@ -3,86 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>Rock Paper Scissors Game</title>
+    <style>
+        @import url(http://fonts.googleapis.com/css?family=Roboto); 
+    </style>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/index.css">
   </head>
   <body>
     <h1>Rock Paper Scissors Game</h1>
-
-    <h2>Score</h2>
-    <div class="score">You: 0 Computer: 0</div>
-    <h2>Message</h2>
-    <div class="result">Press any button to play against computer</div>
-    <br>
-
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
-
-    <script>
-
-        const ROCK = 'Rock';
-        const PAPER = 'Paper';
-        const SCISSORS = 'Scissors';
-        let playerScore = 0;
-        let computerScore = 0;
-
-        function computerPlay() {
-            let newSelection = Math.floor(Math.random()*3)
-            return newSelection === 0 ? ROCK : (newSelection === 1 ? PAPER : SCISSORS)
-        }
-
-        const updateCase = (str) => str.charAt(0).toUpperCase() + str.substring(1)
-
-        function getResultStr (hasWinned, winPlay, losePlay) {
-            return `You ${hasWinned ? 'won' : 'lost'} the round! ${winPlay} beats ${losePlay}.`
-        }
-
-        function playRound(playerSelection, computerSelection) {
-            let playerSel = updateCase(playerSelection)
-            let computerSel = updateCase(computerSelection)
-
-            if (playerSel === computerSel) {
-                return `Tie this round, both are ${playerSel}`
-            } else if (playerSel === ROCK) {
-                if (computerSel === SCISSORS) {
-                    return getResultStr(true, playerSel, computerSel)
-                } else {
-                    return getResultStr(false, computerSel, playerSel)
-                }
-            } else if (playerSel === PAPER) {
-                if (computerSel === ROCK) {
-                    return getResultStr(true, playerSel, computerSel)
-                } else {
-                    return getResultStr(false, computerSel, playerSel)
-                }
-            } else if (playerSel === SCISSORS) {
-                if (computerSel === PAPER) {
-                    return getResultStr(true, playerSel, computerSel)
-                } else {
-                    return getResultStr(false, computerSel, playerSel)
-                }
-            }
-        }
-
-        const handleButtonClick = (e) => {
-            if (computerScore === 5 || playerScore === 5) {
-                computerScore = 0;
-                playerScore = 0;
-            }
-            let result = playRound(e.target.id, computerPlay());
-            if (result.includes('won')) playerScore++;
-            if (result.includes('lost')) computerScore++;
-            if (computerScore === 5) {
-                result += " <b>Computer won the game.</b>"
-            } else if (playerScore === 5) {
-                result += " <b>You won the game.</b>"
-            }
-            document.querySelector('.result').innerHTML = result;
-            document.querySelector('.score').textContent = `You: ${playerScore} Computer: ${computerScore}`
-        }
-
-        document.querySelectorAll('button').forEach((element) => element.addEventListener('click', handleButtonClick))
-
-    </script>
-
+    <div class="score">
+        <div class="score-box">
+            <div class="score-name">You</div>
+            <div id="score-user" class="score-value">0</div>
+        </div>
+        <div class="score-box">
+            <div class="score-name">Computer</div>
+            <div id="score-computer" class="score-value">0</div>
+        </div>
+    </div>
+    <div class="message">Press any button to play against computer</div>
+    <div class="buttons">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>    
+    </div>
+    <script src="scripts/index.js"></script>
   </body>
 </html>
