@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Etch-a-Sketch</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body>
+    <h1>Etch-A-Sketch</h1>
+    <div class="control-container">
+        <div></div>
+        <div class="controls">
+            <div class="control">
+                <label for="gridsize">Grid size</label>
+                <input type="number" id="gridsize" name="gridsize" min="3" max="64" value="16">
+            </div>
+            <div class="control">
+                <label for="color">Color</label>
+                <select name="color" id="color">
+                    <option value="black" selected>Black</option>
+                    <option value="random">Random</option>
+                    <option value="gray">Gray</option>
+                    <option value="white">White</option>
+                </select>
+            </div class="control">
+            <div class="control">
+                <label for="gridlines">Grid lines</label>
+                <input type="checkbox" id="gridlines" name="gridlines" checked>
+            </div>
+            <div class="control">
+                <button id="clear">Clear</button>
+            </div>
+        </div>
+        <div></div>
+    </div>
+    <div class="container">
+        <div></div>
+        <div class="grid"></div>
+        <div></div>
+    </div>
+    <script src="scripts/index.js"></script>
+  </body>
+</html>
