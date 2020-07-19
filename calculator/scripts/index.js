@@ -21,22 +21,20 @@ const functions = {
     "/" : divide,
 }
 
-const operate = (operator, a, b) => {
-    console.log(`${operator} ${a} ${b} ${functions[operator](a, b)}`);
-    return functions[operator](a, b);
-}
+const operate = (operator, a, b) => functions[operator](a, b);
 
 const getDisplay = () => document.querySelector('.display').textContent;
 
 const setDisplay = (val) => document.querySelector('.display').textContent = val;
 
+const isOperator = (c) => ["+", "-", "*", "/"].includes(c);
+
+const isDigit = (c) => (c >= "0" && c <= "9");
+
 let dotAllowed = true;
 let operatorAllowed = false;
 let lastNumber = "";
 let tokens = [];
-
-const isOperator = (c) => ["+", "-", "*", "/"].includes(c);
-const isDigit = (c) => (c >= "0" && c <= "9");
 
 const handleInput = (val) => {
     let display = getDisplay();
@@ -78,24 +76,17 @@ const handleInput = (val) => {
     } else if (val === "=") {
         if (operatorAllowed && tokens.length > 1) {
             let tokensFinal = tokens.concat(lastNumber);
-            console.log(`Calc ${tokensFinal}`);
             let result = operate(tokensFinal[1], tokensFinal[0], tokensFinal[2]);
-            console.log(`ResultInterim=${result}`)
             for (let i = 3; i < tokensFinal.length; i+=2) {
                 result = operate(tokensFinal[i], result, tokensFinal[i + 1]);
             }
-            console.log(`Result=${result}`);
-
             dotAllowed = true;
             operatorAllowed = true;
             lastNumber = `${result}`;
             tokens = [];
             setDisplay(`${result}`);
-
         }
     }
-    console.log(lastNumber);
-    console.log(tokens);
 }
 
 const handleButtonClick = (e) => {
