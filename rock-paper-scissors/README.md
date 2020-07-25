@@ -1,2 +1,2 @@
 # Rock Paper Scissors game
-Rock Paper Scissors game implementation for [this](https://www.theodinproject.com/courses/web-development-101/lessons/rock-paper-scissors) project assignment.
+Rock Paper Scissors game implementation for [this](https://www.theodinproject.com/courses/web-development-101/lessons/rock-paper-scissors) project assignment ([View in browser](https://orhanugurlu.github.io/the_odin_project/rock-paper-scissors/index.html)).
