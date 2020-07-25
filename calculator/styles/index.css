@@ -49,6 +49,7 @@ h1 {
     text-align: right;
     vertical-align: bottom;
     padding: 30px 10px 10px 10px;
+    line-height: 45px;
 }
 .twocolspan {
     grid-area: span 1 / span 2;
