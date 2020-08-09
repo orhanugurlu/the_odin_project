@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Library</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">Library</div>
+      <div id="form">
+        <form id="book-form" method="POST">
+          <div class="item">
+            <div>
+              <label for="title-label" id="title-label">Name</label>
+            </div>
+            <div>
+              <input type="text" id="name" name="name-label" placeholder="Enter book title" required>
+            </div>
+          </div>      
+          <div class="item">
+            <div>
+              <label for="author-label" id="author-label">Author</label>
+            </div>
+            <div>
+              <input type="text" id="author" name="author-label" placeholder="Enter author" required>
+            </div>
+          </div>      
+          <div class="item">
+            <div>
+              <label for="pages-label" id="pages-label">Pages</label>
+            </div>
+            <div>
+              <input type="number" id="pages" name="pages-label" placeholder="Enter no of pages" required>
+            </div>
+          </div>
+          <div class="item">
+            <div>
+              <input type="submit" id="add" value="Add">
+            </div>
+          </div>      
+        </form>
+      </div>
+      <div id="list"> 
+      </div>
+    </div>
+    <script src="scripts/index.js"></script>
+  </body>
+</html>
