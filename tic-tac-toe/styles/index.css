@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;  
+}
+body {
+    margin:0;
+    padding:0;
+}
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 110%;
+}
+#header {
+    font-size: 200%;
+    font-weight: bold;
+    padding: 1em 0 0 0;
+}
+#message {
+    padding: 1em 0 0 0;
+}
+button {
+    width: 100%;
+    font-size: 90%;
+    padding: 0.5em;
+    margin: 0.2em 0;
+    font-family: inherit;  
+    border-radius: 0.2em;
+}
+#add {
+    background-color: #47cf73;
+    color: white;
+    width: 5em;
+}
+.delete {
+    background-color: LightCoral;
+    color: white;
+    width: 5em;
+}
+.read {
+    background-color: #a5aca7;
+    color: white;
+    width: 8em;
+}
