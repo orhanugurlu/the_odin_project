@@ -34,7 +34,6 @@ const createGridCell = (row, col) => {
     div.style.gridColumnEnd = col + 1;
     div.style.gridRowStart = row;
     div.style.gridRowEnd = row + 1;
-    div.style.backgroundClip = 
     div.addEventListener('mouseover', handleMouseOver);
     return div;
 }
