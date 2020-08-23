@@ -10,10 +10,39 @@
   <body>
     <div id="container">
       <div id="header">Tic Tac Toe</div>
-      <div id="message"></div>
-      <div id="gameboard">
+      <div id="topbar">
+        <div class="player" id="player1">
+          <div class="name">
+            <input type="text" class="name_input" placeholder="Player 1">
+          </div>
+          <div class="symbol"></div>
+          <div class="score"></div>
+        </div>
+        <div class="player" id="player2">
+          <div class="name">
+            <input type="text" class="name_input" placeholder="Player 2">
+          </div>
+          <div class="symbol"></div>
+          <div class="score"></div>
+        </div>
+      </div>
+      <div class="settings">
+        <button id="new_round">New Round</button>
+        <select name="game_type" id="game_type">
+        </select>
+        <button id="new_game">New Game</button>
+      </div>
+      <div id="board">
+        <div id="gameboard">
+        </div>
+        <div id="message_container">
+          <div id="message"></div>
+        </div>
       </div>
     </div>
-    <script src="scripts/index.js"></script>
+    <script src="scripts/boardstatus.js"></script>
+    <script src="scripts/player.js"></script>
+    <script src="scripts/board.js"></script>
+    <script src="scripts/controller.js"></script>
   </body>
 </html>
