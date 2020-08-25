@@ -1,12 +1,5 @@
 const LOCAL_STORAGE_KEY = 'the_odin_project_library'
 
-function Book(title, author, pages, read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
-}
-
 function createDelCell(index) {
     const delCell = document.createElement('td')
     const delBtn = document.createElement('button')
@@ -24,37 +17,48 @@ function toggleReadState(e) {
     e.target.textContent = library[index].isRead()
 }
 
-Book.prototype.row = function() {
-    const row = document.createElement('tr')
-    Object.keys(this).forEach((key) => {
-        const cell = document.createElement('td')
-        if (key === 'read') {
-            const readBtn = document.createElement('button')
-            readBtn.className = 'read'
-            readBtn.addEventListener('click', toggleReadState)
-            readBtn.textContent = this.isRead()
-            cell.appendChild(readBtn)
-        } else {
-            cell.textContent = this[key]
-        }
-        row.appendChild(cell)
-    })
-    row.append(createDelCell())
-    return row
-}
+class Book {
 
-Book.prototype.header = function() {
-    const row = document.createElement("tr")
-    Object.keys(this).forEach((key) => {
-        const col = document.createElement("th")
-        col.textContent = key.charAt(0).toUpperCase() + key.substring(1)
-        row.appendChild(col)
-    })
-    return row
-}
+    constructor(title, author, pages, read) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read    
+    }
 
-Book.prototype.isRead = function() {
-    return this.read ? 'Read' : 'Not Read'; 
+    row() {
+        const row = document.createElement('tr')
+        Object.keys(this).forEach((key) => {
+            const cell = document.createElement('td')
+            if (key === 'read') {
+                const readBtn = document.createElement('button')
+                readBtn.className = 'read'
+                readBtn.addEventListener('click', toggleReadState)
+                readBtn.textContent = this.isRead()
+                cell.appendChild(readBtn)
+            } else {
+                cell.textContent = this[key]
+            }
+            row.appendChild(cell)
+        })
+        row.append(createDelCell())
+        return row
+    }
+
+    header() {
+        const row = document.createElement("tr")
+        Object.keys(this).forEach((key) => {
+            const col = document.createElement("th")
+            col.textContent = key.charAt(0).toUpperCase() + key.substring(1)
+            row.appendChild(col)
+        })
+        return row
+    }
+
+    isRead() {
+        return this.read ? 'Read' : 'Not Read'; 
+    }
+
 }
 
 let library = [
